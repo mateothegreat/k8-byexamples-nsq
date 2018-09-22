@@ -1,4 +1,0 @@
-[submodule ".make"]
-	path = .make
-	url = https://github.com/mateothegreat/.make
-	branch = master
