@@ -1,0 +1,23 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: nsqd
+  labels:
+    app: nsq
+  annotations:
+    # Enable automatic monitoring of all instances when Prometheus is running in the cluster.
+    prometheus.io/scrape: "true"
+    prometheus.io/path: "ping"
+    prometheus.io/port: "4151"
+spec:
+  ports:
+  - port: 4150
+    targetPort: 4150
+    name: tcp
+  - port: 4151
+    targetPort: 4151
+    name: http
+  type: NodePort
+  selector:
+    app: nsq
+    component: nsqd
