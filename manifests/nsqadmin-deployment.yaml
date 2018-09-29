@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nsqadmin
+spec:
+  selector:
+    matchLabels:
+      app: nsq
+      component: nsqadmin
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: nsq
+        component: nsqadmin
+    spec:
+      containers:
+      - name: nsqd
+        image: sporkmonger/nsq-k8s:0.3.8
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 4171
+          name: http
+        command:
+          - /usr/local/bin/nsqadmin
+          - -lookupd-http-address
+          - nsqlookupd-0.nsqlookupd.default.svc.cluster.local:4161
+          # - -lookupd-tcp-address
+          # - nsqlookupd-0.nsqlookupd.default.svc.cluster.local:4160
+          # - -lookupd-tcp-address
+          # - nsqlookupd-1.nsqlookupd.default.svc.cluster.local:4160
+          # - -lookupd-tcp-address
+          # - nsqlookupd-2.nsqlookupd.default.svc.cluster.local:4160
