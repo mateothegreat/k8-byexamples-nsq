@@ -17,7 +17,7 @@ spec:
       containers:
       - name: nsqd
         # image: sporkmonger/nsq-k8s:0.3.8
-        image: nsqio/nsq:v1.1.0
+        image: nsqio/nsq:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 4171

@@ -25,7 +25,7 @@ spec:
             topologyKey: "kubernetes.io/hostname"    
       containers:
       - name: nsqlookupd
-        image: sporkmonger/nsq-k8s:0.3.8
+        image: nsqio/nsq:latest
         imagePullPolicy: Always
         ports:
         - containerPort: 4160
