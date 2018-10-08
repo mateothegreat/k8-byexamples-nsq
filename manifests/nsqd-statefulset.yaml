@@ -23,15 +23,6 @@ spec:
                 values:
                 - nsqd
             topologyKey: "kubernetes.io/hostname"
-        podAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-          - labelSelector:
-              matchExpressions:
-              - key: component
-                operator: In
-                values:
-                - nsqlookupd
-            topologyKey: "kubernetes.io/hostname"    
       containers:
       - name: nsqd
         image: sporkmonger/nsq-k8s:0.3.8
